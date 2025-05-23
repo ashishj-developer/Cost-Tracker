@@ -1,0 +1,14 @@
+.centered_component{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+@media screen and (max-width: 600px) {
+    .centered_component{
+        width: 100%;
+        padding: 2vh;
+    }
+    
+}
