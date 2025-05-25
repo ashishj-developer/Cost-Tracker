@@ -1,27 +1,45 @@
-import { signOut } from "firebase/auth";
-import { auth } from "../../firebase";
-import { Button } from "@chakra-ui/react";
-import { useNavigate } from "react-router-dom";
+import Header from "./header";
 import AddItemForm from "./addForm";
+import "./index.css"; 
+import { EmptyState, VStack } from "@chakra-ui/react"
+import { FaWpforms } from "react-icons/fa";
+
+
 
 const Home = () => {
-  const navigate = useNavigate();
+  const listItem = [];
 
-  const handleSignOut = async () => {
-    try {
-      await signOut(auth);
-      navigate("/login");
-    } catch (error) {
-      console.error("Error signing out:", error);
+
+  const renderListItem = () => {
+    if (listItem.length === 0) {
+      return (
+        <div className="empty-state">
+          <EmptyState.Root >
+            <EmptyState.Content>
+              <EmptyState.Indicator>
+                <FaWpforms />
+              </EmptyState.Indicator>
+              <VStack textAlign="center">
+                <EmptyState.Title>Your Form is empty</EmptyState.Title>
+                <EmptyState.Description>
+                  Enter Detais to add items to your list.
+                </EmptyState.Description>
+              </VStack>
+            </EmptyState.Content>
+          </EmptyState.Root>
+        </div>
+      )
     }
-  };
+    return <h1>listitme is avi</h1>
+  }
 
   return (
     <div>
-      <h1>Welcome to the Home Page</h1>
-      <p>This is the home page of our application.</p>
-      <Button onClick={handleSignOut}>Sign Out</Button>
-      <AddItemForm/>
+      <Header />
+      <div className="home-container">
+        {renderListItem()}
+        <AddItemForm />
+      </div>
     </div>
   );
 };

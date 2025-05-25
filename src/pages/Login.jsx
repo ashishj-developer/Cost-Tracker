@@ -146,7 +146,7 @@ export const Login = () => {
                     </Fieldset.Root>
                 </Card.Body>
                 <Card.Footer justifyContent="flex-end">
-                    <IconButton onClick={signUpwithGoogle} aria-label="Search database">
+                    <IconButton onClick={signUpwithGoogle} aria-label="Search database"  backgroundColor={'transparent'}>
                         <FcGoogle />
                     </IconButton>
                     <Button loading={loading} onClick={signUpForm}>
@@ -209,7 +209,7 @@ export const Login = () => {
                     </Fieldset.Root>
                 </Card.Body>
                 <Card.Footer justifyContent="flex-end">
-                    <IconButton onClick={signUpwithGoogle} aria-label="Search database">
+                    <IconButton onClick={signUpwithGoogle} aria-label="Search database" backgroundColor={'transparent'}>
                         <FcGoogle />
                     </IconButton>
                     <Button loading={loading} onClick={loginForm}>
