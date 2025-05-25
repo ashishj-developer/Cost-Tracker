@@ -20,6 +20,7 @@ import {
     signInWithPopup
 } from "firebase/auth";
 import { useNavigate, Navigate } from "react-router-dom";
+import { LuArrowRight } from "react-icons/lu"
 
 export const Login = () => {
     const [loading, setLoading] = useState(false); // Loading state for login/signup
@@ -150,7 +151,7 @@ export const Login = () => {
                         <FcGoogle />
                     </IconButton>
                     <Button loading={loading} onClick={signUpForm}>
-                        Sign UP
+                        Create account <LuArrowRight />
                     </Button>
                 </Card.Footer>
             </Card.Root>

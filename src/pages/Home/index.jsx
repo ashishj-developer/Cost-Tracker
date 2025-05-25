@@ -3,7 +3,7 @@ import AddItemForm from "./addForm";
 import "./index.css"; 
 import { EmptyState, VStack } from "@chakra-ui/react"
 import { FaWpforms } from "react-icons/fa";
-
+import TableItem from "./TableItem";
 
 
 const Home = () => {
@@ -11,7 +11,7 @@ const Home = () => {
 
 
   const renderListItem = () => {
-    if (listItem.length === 0) {
+    if (listItem.length !== 0) {
       return (
         <div className="empty-state">
           <EmptyState.Root >
@@ -30,7 +30,7 @@ const Home = () => {
         </div>
       )
     }
-    return <h1>listitme is avi</h1>
+    return <TableItem />;
   }
 
   return (

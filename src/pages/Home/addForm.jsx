@@ -4,6 +4,7 @@ import { useState } from "react";
 import { auth, db } from "../../firebase";
 import { doc, setDoc } from "firebase/firestore";
 import { v4 as uuid } from 'uuid'; // Importing uuid for unique item IDs
+import { toaster } from "../../components/ui/toaster"
 
 const AddItemForm = () => {
     const [itemName, setItemName] = useState('');
@@ -16,7 +17,10 @@ const AddItemForm = () => {
 
     const handleSubmit = async () => {
         if (itemName.length === 0 || itemCost === "" || otherCostName.length === 0 || otherCostAmount === "") {
-            alert("Please fill all fields correctly.");
+            toaster.create({
+                description: "Please fill all fields correctly.",
+                type: "warning",
+              })
             return;
         }
         setLoading(true);
@@ -33,13 +37,17 @@ const AddItemForm = () => {
                 description: otherCostName,
                 amount: parseFloat(otherCostAmount),
             });
-            
+
             // Reset form fields after successful submission
             setItemName('');
             setItemCost('');
             setOtherCostName('');
             setOtherCostAmount('');
             setLoading(false);
+            toaster.create({
+                title: `File added successfully`,
+                type: "success",
+            })
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -47,7 +55,7 @@ const AddItemForm = () => {
 
     const negativeValueCheck1 = (event) => {
         const value = event.target.value;
-        if (value >= 0) {
+        if (value > 0) {
             setOtherCostAmount(value);
         } else {
             setOtherCostAmount('');
