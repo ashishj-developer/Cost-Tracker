@@ -1,20 +1,3 @@
-.table-Item {
-    width: 60%;
-    height: 90vh;
-    border-radius: 5px;
-    border: 1px solid;
-    display: flex;
-    flex-direction: column;
-}
-
-.table-Header{
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    padding: 2vh;
-    border-top-right-radius: 5px;
-    border-top-left-radius: 5px;
-}
 
 .table-Body{
     width: 100%;
@@ -31,21 +14,5 @@
     margin-left: 5vh;
 }
 
-.table-Footer{
-    margin-top: auto;
-    align-self: flex-end;
-    display: flex;
-    justify-content: space-between;
-    width: 40%;
-    padding: 2vh;;
-}
 
-.Total-item{
-    flex-direction: column;
-    align-items: flex-start;
-}
 
-.Total-Price{
-    flex-direction: column;
-    align-items: flex-end;
-}
