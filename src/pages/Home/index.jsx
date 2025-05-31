@@ -27,6 +27,7 @@ const Home = () => {
         id: doc.id,
         ...doc.data()
       };
+    
       setItems(prevItems => [...prevItems, itemDataObject]);
     });
     const querySnapshot2 = await getDocs(collection(db, "users", userId, "otherCosts"));
