@@ -1,4 +1,4 @@
-import "./tableItem.css";
+import "./TableItem.css";
 import { Box, IconButton, Text, Wrap } from "@chakra-ui/react";
 import { HiMiniArrowTurnDownRight } from "react-icons/hi2";
 import { FaEdit } from "react-icons/fa";
