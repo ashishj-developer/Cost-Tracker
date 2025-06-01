@@ -39,7 +39,7 @@
     align-self: flex-end;
     display: flex;
     justify-content: space-between;
-    width: 40%;
+    min-width: 40%;
     padding: 2vh;;
 }
 
@@ -53,3 +53,8 @@
     align-items: flex-start;
 }
 
+.table-content{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+}

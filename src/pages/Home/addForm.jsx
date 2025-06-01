@@ -6,13 +6,14 @@ import { doc, setDoc } from "firebase/firestore";
 import { v4 as uuid } from 'uuid'; // Importing uuid for unique item IDs
 import { toaster } from "../../components/ui/toaster"
 
-const AddItemForm = () => {
+const AddItemForm = (props) => {
     const [itemName, setItemName] = useState('');
     const [itemCost, setItemCost] = useState('');
     const [otherCostName, setOtherCostName] = useState('');
     const [otherCostAmount, setOtherCostAmount] = useState('');
-    const [loading, setLoading] = useState(false);
     const userId = auth.currentUser.uid;
+    const { setMergedItems, loading , setLoading} = props; // Assuming this prop is passed to update the merged items list
+
 
 
     const handleSubmit = async () => {
@@ -38,6 +39,15 @@ const AddItemForm = () => {
                 amount: parseFloat(otherCostAmount),
             });
 
+            const obj = {
+                id: id,
+                name: itemName,
+                cost: parseFloat(itemCost),
+                description: otherCostName,
+                amount: parseFloat(otherCostAmount),
+            }
+            setMergedItems(prevItems => [...prevItems, obj]); // Update the merged items list
+
             // Reset form fields after successful submission
             setItemName('');
             setItemCost('');
@@ -50,6 +60,10 @@ const AddItemForm = () => {
             })
         } catch (e) {
             console.error("Error adding document: ", e);
+            toaster.create({
+                title: `Failed to add item`,
+                type: "error",
+            })
         }
     }
 
