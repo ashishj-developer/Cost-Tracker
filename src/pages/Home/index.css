@@ -23,6 +23,10 @@
     border: 1px solid;
     display: flex;
     flex-direction: column;
+    @media screen and (max-width: 768px) {
+        height: 90vh;
+        width: 100%;
+    }
 }
 
 .table-Header{
@@ -55,6 +59,5 @@
 
 .table-content{
     width: 100%;
-    height: 100%;
     overflow-y: auto;
 }

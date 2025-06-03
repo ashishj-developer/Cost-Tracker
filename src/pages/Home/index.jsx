@@ -8,7 +8,6 @@ import {
   Text,
   Wrap,
   Box,
-  Button,
   ProgressCircle,
 } from "@chakra-ui/react";
 import { FaWpforms } from "react-icons/fa";
@@ -110,7 +109,9 @@ const Home = () => {
               loading={loading}
               setLoading={setLoading}
               key={item.id}
-              mergedobj={item} />
+              mergedobj={item}
+              setMergedItems={setMergedItems} 
+              />
           ))}</Wrap>
         <Box className="table-Footer">
           <hr />
