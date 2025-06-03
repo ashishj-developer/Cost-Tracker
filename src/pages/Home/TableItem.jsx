@@ -6,6 +6,7 @@ import { doc, deleteDoc, updateDoc } from "firebase/firestore";
 import { db, auth } from "../../firebase"; // Adjust the path if necessary
 import { useState } from "react";
 import { toaster } from "../../components/ui/toaster"; // Adjust the path if necessary
+import { TiDelete } from "react-icons/ti";
 
 
 const TableItem = (props) => {
@@ -125,9 +126,9 @@ const TableItem = (props) => {
         return (
             <Drawer.Root>
                 <Drawer.Trigger asChild>
-                    <Button>
-                        Edit
-                    </Button>
+                    <IconButton aria-label="Search database" variant={"outeline"}>
+                        <FaEdit />
+                    </IconButton>
                 </Drawer.Trigger>
                 <Portal>
                     <Drawer.Backdrop />
@@ -186,7 +187,7 @@ const TableItem = (props) => {
                     <Popover.Positioner>
                         <Popover.Content className="popover-content">
                             <Popover.Body className="popover-body">
-                                {drawer()}
+                                {}
                                 <Button loading={DelLoading} loadingText="Deleting..." onClick={deleteData}>Delete</Button>
                             </Popover.Body>
                         </Popover.Content>
@@ -201,12 +202,21 @@ const TableItem = (props) => {
             <Box className="table-Body">
                 <Skeleton height="6" width="100" loading={loading}>
                     <Wrap align={"center"}>
-                        {editButton()}
+                        {drawer()}
                         <Text fontSize={'2.5vh'} fontWeight={'bold'}>{mergedobj.name}</Text>
                     </Wrap>
                 </Skeleton>
                 <Skeleton height="6" width="100" loading={loading}>
-                    <Text fontSize={'2vh'}>{formatCurrency(mergedobj.cost)}</Text>
+                    <Text fontSize={'2vh'}>{formatCurrency(mergedobj.cost)}
+                        <Button
+                            aria-label="Delete item"
+                            loading={DelLoading}
+                            onClick={deleteData}
+                            variant="ghost"
+                        >
+                            <TiDelete colorScheme="red"/>
+                        </Button>
+                    </Text>
                 </Skeleton>
             </Box>
 
